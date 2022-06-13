@@ -20,7 +20,7 @@ function Books() {
     }, []);
 
     const searchBooks = async (title) => {
-        const { data }  = await axios.get(`${API_URL}/getBooksByTitle?title=${title}`);
+        const {data} = await axios.get(`${API_URL}/getBooksByTitle?title=${title}`);
 
         setBooks(data);
     };

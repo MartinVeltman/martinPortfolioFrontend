@@ -9,12 +9,12 @@ function Login() {
     const [password, setPassword] = useState("");
 
     const login = () => {
-        const {data} = axios.post(`${API_URL}`, {
+        axios.post(`${API_URL}`, {
             "username": username,
             "password": password
+        }).then(function (response) {
+            localStorage.setItem('JWT', JSON.stringify(response));
         })
-
-
     };
 
     useEffect(() => {
