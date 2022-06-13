@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import '../App.css';
 import axios from "axios";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const API_URL = 'http://localhost:8080/api/v1/book/createBook';
 
@@ -27,10 +29,14 @@ function AddBook() {
     }, []);
 
     const addBook = () => {
-        if (localStorage.getItem('JWT') != null && localStorage.getItem('JWT').length > 0) {
-            axios.post(`${API_URL}`, book).then(response => console.log(response));
+        if (document.cookie.length === 12) {
+            axios.post(`${API_URL}`, book).then(function () {
+                toast.success("Book succesfully added")
+            }).catch(function () {
+                toast.error("Something went wrong. oops!")
+            });
         } else {
-            console.log("pech")
+            toast.error("Are you a admin?")
         }
     }
 
@@ -42,47 +48,48 @@ function AddBook() {
                 <div className="group">
                     <input placeholder="Fill in a title"
                            onChange={(e) => setTitle(e.target.value)}/>
-                    <span className="bar"></span>
+                    <span className="bar"/>
                     <label>Title</label>
                 </div>
 
                 <div className="group">
                     <input placeholder="Fill in a author"
                            onChange={(e) => setAuthor(e.target.value)}/>
-                    <span className="bar"></span>
+                    <span className="bar"/>
                     <label>Author</label>
                 </div>
 
                 <div className="group">
                     <input type="number" placeholder="Fill in the releaseyear"
                            onChange={(e) => setReleaseyear(e.target.value)}/>
-                    <span className="bar"></span>
+                    <span className="bar"/>
                     <label>Releaseyear</label>
                 </div>
 
                 <div className="group">
                     <input placeholder="Give the imagepath"
                            onChange={(e) => setImagepath(e.target.value)}/>
-                    <span className="bar"></span>
+                    <span className="bar"/>
                     <label>Imagepath</label>
                 </div>
 
                 <div className="group">
                     <input placeholder="Fill in a description"
                            onChange={(e) => setDescription(e.target.value)}/>
-                    <span className="bar"></span>
+                    <span className="bar"/>
                     <label>Description</label>
                 </div>
 
                 <div className="group">
                     <input placeholder="Fill in a review"
                            onChange={(e) => setReview(e.target.value)}/>
-                    <span className="bar"></span>
+                    <span className="bar"/>
                     <label>Review</label>
                 </div>
 
                 <button type="button" onClick={addBook}>Add book</button>
             </div>
+            <ToastContainer theme="dark"/>
         </div>
 
 
