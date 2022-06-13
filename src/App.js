@@ -4,6 +4,8 @@ import Books from "./pages/Books";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import AddBook from "./pages/AddBook";
+import AddCourses from "./pages/AddCourses";
+import AddProject from "./pages/AddProject";
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
                     <Route path='/books' element={<Books/>}/>
                     <Route path='/admin' element={<Admin/>}/>
                     <Route path='/admin/books' element={<AddBook/>}/>
+                    <Route path='/admin/courses' element={<AddCourses/>}/>
+                    <Route path='/admin/projects' element={<AddProject/>}/>
                 </Routes>
             </Router>
         </>

@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 import searchIcon from '../search.svg';
 import BookCard from "../components/BookCard";
 import axios from "axios";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const API_URL = 'http://localhost:8080/api/v1/book';
 
@@ -15,7 +17,9 @@ function Books() {
         fetch(`${API_URL}` + '/getBooks').then((res) => res.json())
             .then((json) => {
                 setBooks(json);
+                toast.info("Click on a book to know more about it");
             })
+
 
     }, []);
 
@@ -53,6 +57,7 @@ function Books() {
                     <h2>No books found</h2>
                 </div>
             )}
+            <ToastContainer/>
         </div>
     );
 }

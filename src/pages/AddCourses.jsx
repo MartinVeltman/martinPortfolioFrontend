@@ -1,6 +1,7 @@
 import {useEffect} from "react";
 
-function AddProject() {
+function AddCourses() {
+
 
     useEffect(() => {
 
@@ -9,11 +10,11 @@ function AddProject() {
 
     return (
         <div className="app">
-            <h1>Add a project</h1>
+            <h1>Add a course</h1>
         </div>
 
 
     );
 }
 
-export default AddProject;
+export default AddCourses;
