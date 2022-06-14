@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.3.0",
+    "styled-components": "^5.3.5",
     "universal-cookie": "^4.0.4"
   }
 }
