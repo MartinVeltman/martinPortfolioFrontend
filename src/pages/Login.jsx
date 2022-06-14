@@ -41,11 +41,22 @@ function Login() {
     return (
         <div className="app">
             <h1>Login for admin</h1>
-            <div>
-                <input type="username" placeholder="Fill in username"
-                       onChange={(e) => setUsername(e.target.value)}/>
-                <input type="password" placeholder="Fill in password"
-                       onChange={(e) => setPassword(e.target.value)}/>
+            <div className="addContainer">
+
+                <div className="group">
+                    <input type="username" placeholder="Fill in username"
+                           onChange={(e) => setUsername(e.target.value)}/>
+                    <span className="bar"/>
+                    <label>Username</label>
+                </div>
+
+                <div className="group">
+                    <input type="password" placeholder="Fill in password"
+                           onChange={(e) => setPassword(e.target.value)}/>
+                    <span className="bar"/>
+                    <label>Password</label>
+                </div>
+
                 <button type="button" onClick={login}>Login</button>
             </div>
             <ToastContainer theme="dark"/>

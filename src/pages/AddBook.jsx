@@ -29,7 +29,7 @@ function AddBook() {
     }, []);
 
     const addBook = () => {
-        if (document.cookie.length === 12) {
+        if (document.cookie.length > 3) {
             axios.post(`${API_URL}`, book).then(function () {
                 toast.success("Book succesfully added")
             }).catch(function () {

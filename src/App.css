@@ -30,7 +30,7 @@ h1 {
     letter-spacing: 0.9px;
     background: linear-gradient(
             90deg,
-            rgba(249, 211, 180, 1) 0%,
+            rgba(249, 211, 180, 1) 90%,
             rgba(249, 211, 180, 0) 100%
     );
     -webkit-background-clip: text;
@@ -328,6 +328,29 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
     margin: 30px auto 0;
     display: block;
     padding: 10px 50px 50px;
+}
+
+.modal {
+    background-color: #212426;;
+    border: 1px solid #464545;
+    color: #fff;
+}
+
+.modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    background: #292d3e;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+}
+
+h3{
+    color: #f9d3b4;
 }
 
 
