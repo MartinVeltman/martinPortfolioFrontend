@@ -17,7 +17,7 @@ function Books() {
         fetch(`${API_URL}` + '/getBooks').then((res) => res.json())
             .then((json) => {
                 setBooks(json);
-                toast.info("Click on a book to know more about it");
+                toast.dark("Click on a card to know more about it!");
             })
 
 

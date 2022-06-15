@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import '../App.css';
 import {useNavigate} from "react-router-dom";
 
-function Admin() {
+function AdminAdd() {
     let navigate = useNavigate();
     const routeChange = (path) => {
         navigate(path);
@@ -27,4 +27,4 @@ function Admin() {
     );
 }
 
-export default Admin;
+export default AdminAdd;

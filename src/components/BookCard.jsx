@@ -7,7 +7,7 @@ const BookCard = ({book: {id, title, imagePath, autor, description, review, rele
     const closeModal = () => setOpen(false);
 
     return (
-        <div className="book" key={id} onClick={() => setOpen(o => !o)}>
+        <div className="card" key={id} onClick={() => setOpen(o => !o)}>
 
             <div>
                 <p>{releaseYear}</p>
