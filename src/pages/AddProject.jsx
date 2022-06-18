@@ -9,15 +9,14 @@ const API_URL = 'http://localhost:8080/api/v1';
 function AddProject() {
     const [title, setTitle] = useState("");
     const [buildYear, setbuildYear] = useState("");
-    const [imagepath, setImagepath] = useState("");
+    const [githubLink, setGithubLink] = useState("");
     const [description, setDescription] = useState("");
 
     const project = {
         title: title,
         buildYear: buildYear,
-        imagepath: githubpath,
+        githubLink: githubLink,
         description: description,
-
     };
 
     useEffect(() => {
@@ -39,7 +38,7 @@ function AddProject() {
 
     return (
         <div className="app">
-            <h1>Add read books here!</h1>
+            <h1>Add your projects here!</h1>
             <div className="addContainer">
 
                 <div className="group">
@@ -49,25 +48,20 @@ function AddProject() {
                     <label>Title</label>
                 </div>
 
+
                 <div className="group">
-                    <input placeholder="Fill in a author"
-                           onChange={(e) => setAuthor(e.target.value)}/>
+                    <input type="number" placeholder="Fill in the year you've build the project"
+                           onChange={(e) => setbuildYear(e.target.value)}/>
                     <span className="bar"/>
-                    <label>Author</label>
+                    <label>Buildyear</label>
                 </div>
 
                 <div className="group">
-                    <input type="number" placeholder="Fill in the releaseyear"
-                           onChange={(e) => setReleaseyear(e.target.value)}/>
+                    <input placeholder="Give the path to github"
+                           onChange={(e) => setGithubLink(e.target.value)}/>
                     <span className="bar"/>
-                    <label>Releaseyear</label>
-                </div>
-
-                <div className="group">
-                    <input placeholder="Give the imagepath"
-                           onChange={(e) => setImagepath(e.target.value)}/>
-                    <span className="bar"/>
-                    <label>Imagepath</label>
+                    <label>Github link</label>
+                    <input type="checkbox"/>
                 </div>
 
                 <div className="group">
@@ -77,14 +71,7 @@ function AddProject() {
                     <label>Description</label>
                 </div>
 
-                <div className="group">
-                    <input placeholder="Fill in a review"
-                           onChange={(e) => setReview(e.target.value)}/>
-                    <span className="bar"/>
-                    <label>Review</label>
-                </div>
-
-                <button type="button" onClick={addBook}>Add book</button>
+                <button type="button" onClick={addProject}>Add project</button>
             </div>
             <ToastContainer theme="dark"/>
         </div>

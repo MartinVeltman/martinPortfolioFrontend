@@ -23,7 +23,7 @@ function AdminPanel() {
     return (
         <div className="app">
             <h1>Welkom Martin, wat wil je doen?</h1>
-            <Button color="primary" theme={theme} className="icon-button" startIcon={<AddIcon/>}
+            <Button color="primary" className="icon-button" startIcon={<AddIcon/>}
                     onClick={event => routeChange('/adminAdd')}>
                 Update website
             </Button>

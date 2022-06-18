@@ -18,9 +18,9 @@ function AdminAdd() {
         <div className="app">
             <h1>Adminpanel</h1>
             <h3>Wat wil je toevoegen?</h3>
-            <button type="button" onClick={ event => routeChange('/admin/books')}>Add books</button>
-            <button type="button" onClick={ event => routeChange('/admin/courses')}>Course</button>
-            <button type="button" onClick={ event => routeChange('/admin/projects')}>Project</button>
+            <button type="button" onClick={ event => routeChange('/admin/books')}>Add Books</button>
+            <button type="button" onClick={ event => routeChange('/admin/courses')}>Add Course</button>
+            <button type="button" onClick={ event => routeChange('/admin/projects')}>Add Project</button>
         </div>
 
 

@@ -3,19 +3,23 @@ import '../App.css';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from "react-router-dom";
+
 
 const API_URL = 'http://localhost:8080/api/v1/user/signin';
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
-    let now = new Date();
+    let timer = new Date();
     const millisecToSec = 1000;
     const cookieExpireTimeInMilliSec = 3600;
-    let time = now.getTime();
+    let time = timer.getTime();
     time += cookieExpireTimeInMilliSec * millisecToSec;
-    now.setTime(time);
+    timer.setTime(time);
+
 
     const login = () => {
         axios.post(`${API_URL}`, {
@@ -24,9 +28,15 @@ function Login() {
         }).then(function () {
             document.cookie =
                 'loggedIn=true' +
-                '; expires=' + now.toUTCString() +
+                '; expires=' + timer.toUTCString() +
                 '; path=/';
-            toast.success("Login succesfull")
+
+            toast.success("Login succesfull, redirecting...")
+
+            setTimeout(() => {
+                navigate("/admin");
+            }, 6000);
+
         }).catch(function () {
             toast.error("Login failed")
         })
