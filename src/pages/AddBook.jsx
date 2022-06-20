@@ -4,7 +4,7 @@ import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL = 'http://localhost:8080/api/v1/book/createBook';
+const API_URL = 'http://localhost:8080/api/v1/book/addBook';
 
 function AddBook() {
     const [title, setTitle] = useState("");
@@ -12,7 +12,7 @@ function AddBook() {
     const [releaseyear, setReleaseyear] = useState("");
     const [imagepath, setImagepath] = useState("");
     const [description, setDescription] = useState("");
-    const [review, setReview] = useState("");
+    const [courseLink, setReview] = useState("");
 
     const book = {
         title: title,
@@ -20,7 +20,7 @@ function AddBook() {
         releaseyear: releaseyear,
         imagepath: imagepath,
         description: description,
-        review: review
+        courseLink: courseLink
     };
 
     useEffect(() => {
@@ -81,7 +81,7 @@ function AddBook() {
                 </div>
 
                 <div className="group">
-                    <input placeholder="Fill in a review"
+                    <input placeholder="Fill in a courseLink"
                            onChange={(e) => setReview(e.target.value)}/>
                     <span className="bar"/>
                     <label>Review</label>

@@ -1,6 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Books from "./pages/Books";
+import Courses from "./pages/Courses";
 import Login from "./pages/Login";
 import AdminAdd from "./pages/AdminAdd";
 import AddBook from "./pages/AddBook";
@@ -21,6 +22,7 @@ function App() {
                 <Routes>
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/books' element={<Books/>}/>
+                    <Route path='/courses' element={<Courses/>}/>
                     <Route path='/admin' element={<AdminPanel/>}/>
                     <Route path='/adminAdd' element={<AdminAdd/>}/>
                     <Route path='/admin/books' element={<AddBook/>}/>

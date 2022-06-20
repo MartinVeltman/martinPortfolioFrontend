@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import 'reactjs-popup/dist/index.css';
 import Popup from 'reactjs-popup';
 
-const CourseCard = ({course: {id, title, instructor, description, courseLink, finishYear, imagePath}}) => {
+const ProjectCard = ({project: {id, title, description, projectLink, buildYear}}) => {
     const [open, setOpen] = useState(false);
     const closeModal = () => setOpen(false);
 
@@ -10,15 +10,10 @@ const CourseCard = ({course: {id, title, instructor, description, courseLink, fi
         <div className="card" key={id} onClick={() => setOpen(o => !o)}>
 
             <div>
-                <p>{finishYear}</p>
+                <p>{buildYear}</p>
             </div>
 
             <div>
-                <img src={imagePath} alt={title}/>
-            </div>
-
-            <div>
-                <span>{instructor}</span>
                 <h3>{title}</h3>
             </div>
             <Popup open={open} closeOnDocumentClick onClose={closeModal}>
@@ -33,8 +28,8 @@ const CourseCard = ({course: {id, title, instructor, description, courseLink, fi
                         <p><em>No description found</em></p>
                     )}
                     <h3>Review</h3>
-                    {courseLink.length > 3 ? (
-                        <p>{courseLink}</p>
+                    {projectLink.length > 3 ? (
+                        <p>{projectLink}</p>
                     ) : (
                         <p><em>No link found</em></p>
                     )}
@@ -46,4 +41,4 @@ const CourseCard = ({course: {id, title, instructor, description, courseLink, fi
     );
 }
 
-export default CourseCard;
+export default ProjectCard;
