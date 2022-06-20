@@ -8,11 +8,13 @@ const COLORS = {
     primaryLight: "#EE982B",
 };
 
+
+
 const MenuLabel = styled.label`
   background-color: ${COLORS.primaryLight};
   position: fixed;
-  top: 6rem;
-  left: 6rem;
+  top: 4rem;
+  right: 5rem;
   border-radius: 50%;
   height: 7rem;
   width: 7rem;
@@ -25,7 +27,7 @@ const MenuLabel = styled.label`
 const NavBackground = styled.div`
   position: fixed;
   top: 6.5rem;
-  left: 6.5rem;
+  right: 6.5rem;
   background-image: radial-gradient(${COLORS.primaryDark},
   ${COLORS.primaryLight});
   height: 6rem;
@@ -53,7 +55,7 @@ const Icon = styled.span`
     height: 2px;
     display: inline-block;
     position: absolute;
-    left: 0;
+    right: 0;
     transition: all 0.3s;
   }
 
@@ -80,7 +82,7 @@ const Navigation = styled.nav`
   height: 100vh;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 600;
   width: ${(props) => (props.clicked ? "100%" : "0")};
   opacity: ${(props) => (props.clicked ? "1" : "0")};

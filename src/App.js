@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar";
 import AdminPanel from "./pages/AdminPanel";
 import {createTheme} from "@mui/material";
 import {green, purple} from "@mui/material/colors";
+import AboutMe from "./pages/AboutMe";
 
 
 
@@ -22,6 +23,7 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route path='/login' element={<Login/>}/>
+                    <Route path='/martin' element={<AboutMe/>}/>
                     <Route path='/projects' element={<Projects/>}/>
                     <Route path='/books' element={<Books/>}/>
                     <Route path='/courses' element={<Courses/>}/>
