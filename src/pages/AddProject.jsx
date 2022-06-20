@@ -4,7 +4,7 @@ import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL = 'http://localhost:8080/api/v1/project';
+const API_URL = 'http://localhost:8080/api/v1/project/addProject';
 
 function AddProject() {
     const [title, setTitle] = useState("");

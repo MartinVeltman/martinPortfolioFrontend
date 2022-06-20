@@ -22,13 +22,13 @@ const ProjectCard = ({project: {id, title, description, projectLink, buildYear}}
                         &times;
                     </a>
                     <h3>Description</h3>
-                    {description.length > 0 ? (
+                    {description?.length > 0 ? (
                         <p>{description}</p>
                     ) : (
                         <p><em>No description found</em></p>
                     )}
                     <h3>Review</h3>
-                    {projectLink.length > 3 ? (
+                    {projectLink?.length > 3 ? (
                         <p>{projectLink}</p>
                     ) : (
                         <p><em>No link found</em></p>

@@ -27,13 +27,13 @@ const BookCard = ({book: {id, title, imagePath, autor, description, review, rele
                         &times;
                     </a>
                     <h3>Description</h3>
-                    {description.length > 0 ? (
+                    {description?.length > 0 ? (
                         <p>{description}</p>
                     ) : (
                         <p><em>No description found</em></p>
                     )}
                     <h3>Review</h3>
-                    {review.length > 0 ? (
+                    {review?.length > 0 ? (
                         <p>{review}</p>
                     ) : (
                         <p><em>No review found</em></p>
