@@ -13,6 +13,7 @@ import AdminPanel from "./pages/AdminPanel";
 import {createTheme} from "@mui/material";
 import {green, purple} from "@mui/material/colors";
 import AboutMe from "./pages/AboutMe";
+import Contact from "./components/Contact";
 
 
 
@@ -27,6 +28,7 @@ function App() {
                     <Route path='/projects' element={<Projects/>}/>
                     <Route path='/books' element={<Books/>}/>
                     <Route path='/courses' element={<Courses/>}/>
+                    <Route path='/contact' element={<Contact/>}/>
                     <Route path='/admin' element={<AdminPanel/>}/>
                     <Route path='/adminAdd' element={<AdminAdd/>}/>
                     <Route path='/admin/books' element={<AddBook/>}/>

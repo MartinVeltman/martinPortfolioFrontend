@@ -133,11 +133,6 @@ function Navbar() {
             <Navigation clicked={click}>
                 <List>
                     <li>
-                        <ItemLink onClick={handleClick} to="/home">
-                            Home
-                        </ItemLink>
-                    </li>
-                    <li>
                         <ItemLink onClick={handleClick} to="/martin">
                             About Me
                         </ItemLink>
