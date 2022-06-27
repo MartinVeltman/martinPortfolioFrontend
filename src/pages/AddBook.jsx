@@ -14,6 +14,20 @@ function AddBook() {
     const [description, setDescription] = useState("");
     const [courseLink, setReview] = useState("");
 
+    function clearFields() {
+        setTitle("");
+        setAuthor("");
+        setReleaseyear("");
+        setImagepath("");
+        setDescription("");
+        setReview("");
+    }
+
+    function checkFields() {
+        return !(title === "" || author === "" || releaseyear === "" || imagepath === "" || description === "" || courseLink === "");
+
+    }
+
     const book = {
         title: title,
         author: author,
@@ -29,21 +43,26 @@ function AddBook() {
     }, []);
 
     const addBook = () => {
-        if (document.cookie.length > 3) {
-            axios.post(`${API_URL}`, book).then(function () {
-                toast.success("Book succesfully added")
-            }).catch(function () {
-                toast.error("Something went wrong. oops!")
-            });
+        if (checkFields()) {
+            if (document.cookie.length > 3) {
+                axios.post(`${API_URL}`, book).then(function () {
+                    toast.success("Book succesfully added")
+                    clearFields();
+                }).catch(function () {
+                    toast.error("Something went wrong. oops!")
+                });
+            } else {
+                toast.error("Are you a admin?")
+            }
         } else {
-            toast.error("Are you a admin?")
+            toast.error("Please fill in all fields")
         }
     }
 
     return (
         <div className="app">
-            <h1>Add read books here!</h1>
             <div className="formContainer">
+                <h1>Add read books here!</h1>
 
                 <div className="group">
                     <input placeholder="Fill in a title"
@@ -91,8 +110,6 @@ function AddBook() {
             </div>
             <ToastContainer theme="dark"/>
         </div>
-
-
     );
 }
 

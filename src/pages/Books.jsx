@@ -20,12 +20,10 @@ function Books() {
                 toast.dark("Click on a card to know more about it!");
             })
 
-
     }, []);
 
     const searchBooks = async (title) => {
         const {data} = await axios.get(`${API_URL}/getBooksByTitle?title=${title}`);
-
         setBooks(data);
     };
 
@@ -57,7 +55,7 @@ function Books() {
                     <h2>No books found</h2>
                 </div>
             )}
-            <ToastContainer/>
+            <ToastContainer theme="dark"/>
         </div>
     );
 }

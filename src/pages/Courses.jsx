@@ -54,7 +54,7 @@ function Courses() {
                     <h2>No Courses found</h2>
                 </div>
             )}
-            <ToastContainer/>
+            <ToastContainer theme="dark"/>
         </div>
     );
 }

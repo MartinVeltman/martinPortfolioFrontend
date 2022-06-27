@@ -1,10 +1,32 @@
 import React, {useState} from "react";
 import 'reactjs-popup/dist/index.css';
 import Popup from 'reactjs-popup';
+import axios from "axios";
+import {toast} from "react-toastify";
+import styled from "styled-components";
+
+const API_URL = 'http://localhost:8080/api/v1/book/delete';
+
+const DeleteButton = styled.button`
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  width: 120px;
+  height: 30px;
+`;
 
 const BookCard = ({book: {id, title, imagePath, autor, description, review, releaseYear}}) => {
     const [open, setOpen] = useState(false);
     const closeModal = () => setOpen(false);
+
+    function deleteBook() {
+        axios.delete(`${API_URL}/${id}`,).then(function () {
+            toast.success("Book succesfully deleted")
+        }).catch(function () {
+            toast.error("Something went wrong. oops!")
+        });
+    }
+
 
     return (
         <div className="card" key={id} onClick={() => setOpen(o => !o)}>
@@ -38,10 +60,10 @@ const BookCard = ({book: {id, title, imagePath, autor, description, review, rele
                     ) : (
                         <p><em>No review found</em></p>
                     )}
+                    {document.cookie.length > 3 ? (<DeleteButton onClick={deleteBook}>Remove</DeleteButton>) : (<p/>)}
                 </div>
             </Popup>
         </div>
-
 
     );
 }

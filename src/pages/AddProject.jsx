@@ -12,6 +12,18 @@ function AddProject() {
     const [githubLink, setGithubLink] = useState("");
     const [description, setDescription] = useState("");
 
+    function checkInputs() {
+        return !(title === "" || buildYear === "" || githubLink === "" || description === "");
+    }
+
+    function clearFields() {
+        setTitle("");
+        setbuildYear("");
+        setGithubLink("");
+        setDescription("");
+    }
+
+
     const project = {
         title: title,
         buildYear: buildYear,
@@ -25,21 +37,27 @@ function AddProject() {
     }, []);
 
     const addProject = () => {
-        if (document.cookie.length > 3) {
-            axios.post(`${API_URL}`, project).then(function () {
-                toast.success("Project succesfully added")
-            }).catch(function () {
-                toast.error("Something went wrong. oops!")
-            });
+        if (checkInputs()) {
+            if (document.cookie.length > 3) {
+                axios.post(`${API_URL}`, project).then(function () {
+                    toast.success("Project succesfully added")
+                    clearFields();
+                }).catch(function () {
+                    toast.error("Something went wrong. oops!")
+                });
+            } else {
+                toast.error("Are you a admin?")
+            }
         } else {
-            toast.error("Are you a admin?")
+            toast.error("Fill in all the fields correctly")
         }
+
     }
 
     return (
         <div className="app">
-            <h1>Add your projects here!</h1>
             <div className="formContainer">
+                <h1>Add your projects here!</h1>
 
                 <div className="group">
                     <input placeholder="Fill in a title"
@@ -47,7 +65,6 @@ function AddProject() {
                     <span className="bar"/>
                     <label>Title</label>
                 </div>
-
 
                 <div className="group">
                     <input type="number" placeholder="Fill in the year you've build the project"
@@ -61,7 +78,6 @@ function AddProject() {
                            onChange={(e) => setGithubLink(e.target.value)}/>
                     <span className="bar"/>
                     <label>Github link</label>
-                    <input type="checkbox"/>
                 </div>
 
                 <div className="group">
@@ -75,8 +91,6 @@ function AddProject() {
             </div>
             <ToastContainer theme="dark"/>
         </div>
-
-
     );
 }
 

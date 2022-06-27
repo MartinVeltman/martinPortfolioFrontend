@@ -23,27 +23,46 @@ function AddCourse() {
         description: description,
     };
 
+    function checkInputs() {
+        return !(title === "" || instructor === "" || yearOfAchievement === "" || imagepath === ""
+            || courseLink === "" || description === "");
+    }
+
+    function clearFields() {
+        setTitle("");
+        setInstructor("");
+        setYearOfAchievement("");
+        setImagepath("");
+        setCourseLink("");
+        setDescription("");
+    }
+
     useEffect(() => {
 
 
     }, []);
 
     const addCourse = () => {
-        if (document.cookie.length > 3) {
-            axios.post(`${API_URL}`, Course).then(function () {
-                toast.success("Course succesfully added")
-            }).catch(function () {
-                toast.error("Something went wrong. oops!")
-            });
+        if(checkInputs()) {
+            if (document.cookie.length > 3) {
+                axios.post(`${API_URL}`, Course).then(function () {
+                    toast.success("Course succesfully added")
+                    clearFields();
+                }).catch(function () {
+                    toast.error("Something went wrong. oops!")
+                });
+            } else {
+                toast.error("Are you a admin?")
+            }
         } else {
-            toast.error("Are you a admin?")
+            toast.error("Please fill in all fields")
         }
     }
 
     return (
         <div className="app">
-            <h1>Add your Courses here!</h1>
             <div className="formContainer">
+                <h1>Add your Courses here!</h1>
 
                 <div className="group">
                     <input placeholder="Fill in a title"
@@ -71,7 +90,6 @@ function AddCourse() {
                            onChange={(e) => setCourseLink(e.target.value)}/>
                     <span className="bar"/>
                     <label>Course link</label>
-                    <input type="checkbox"/>
                 </div>
 
                 <div className="group">
@@ -92,8 +110,6 @@ function AddCourse() {
             </div>
             <ToastContainer theme="dark"/>
         </div>
-
-
     );
 }
 

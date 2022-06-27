@@ -1,10 +1,31 @@
 import React, {useState} from "react";
 import 'reactjs-popup/dist/index.css';
 import Popup from 'reactjs-popup';
+import styled from "styled-components";
+import axios from "axios";
+import {toast} from "react-toastify";
+
+const DeleteButton = styled.button`
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  width: 120px;
+  height: 30px;
+`;
+
+const API_URL = 'http://localhost:8080/api/v1/course/delete';
 
 const CourseCard = ({course: {id, title, instructor, description, courseLink, finishYear, imagePath}}) => {
     const [open, setOpen] = useState(false);
     const closeModal = () => setOpen(false);
+
+    function deleteCourse() {
+        axios.delete(`${API_URL}/${id}`,).then(function () {
+            toast.success("Course succesfully deleted")
+        }).catch(function () {
+            toast.error("Something went wrong. oops!")
+        });
+    }
 
     return (
         <div className="card" key={id} onClick={() => setOpen(o => !o)}>
@@ -38,6 +59,7 @@ const CourseCard = ({course: {id, title, instructor, description, courseLink, fi
                     ) : (
                         <p><em>No link found</em></p>
                     )}
+                    {document.cookie.length > 3 ? (<DeleteButton onClick={deleteCourse}>Remove</DeleteButton>) : (<p/>)}
                 </div>
             </Popup>
         </div>

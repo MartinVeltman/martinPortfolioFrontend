@@ -3,8 +3,6 @@ import {useNavigate} from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@material-ui/core/Button';
 import '../App.css';
-import {green, purple, red} from "@mui/material/colors";
-import {createTheme} from "@mui/material";
 
 function AdminPanel() {
     let navigate = useNavigate();
@@ -12,12 +10,7 @@ function AdminPanel() {
         navigate(path);
     }
 
-
-
-
     useEffect(() => {
-
-
     }, []);
 
     return (
@@ -30,8 +23,6 @@ function AdminPanel() {
             <button type="button" onClick={event => routeChange('/admin/messages')}>Messages</button>
 
         </div>
-
-
     );
 }
 
