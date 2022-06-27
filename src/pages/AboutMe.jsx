@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {useState} from "react";
+import '../App.css';
 
 const StyledSpan = styled.h1`
   font-weight: bolder;

@@ -51,7 +51,7 @@ function Login() {
     return (
         <div className="app">
             <h1>Login for admin</h1>
-            <div className="addContainer">
+            <div className="formContainer">
 
                 <div className="group">
                     <input type="username" placeholder="Fill in username"

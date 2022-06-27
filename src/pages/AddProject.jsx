@@ -39,7 +39,7 @@ function AddProject() {
     return (
         <div className="app">
             <h1>Add your projects here!</h1>
-            <div className="addContainer">
+            <div className="formContainer">
 
                 <div className="group">
                     <input placeholder="Fill in a title"

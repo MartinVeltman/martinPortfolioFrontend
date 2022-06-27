@@ -8,7 +8,6 @@
 }
 
 * {
-    margin: 0;
     border: 0;
     box-sizing: border-box;
 }
@@ -247,13 +246,13 @@ button {
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 700px) {
     .app {
         padding: 4rem 1rem;
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 7vw;
     }
 
     .container {
@@ -331,7 +330,7 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 }
 
 
-.addContainer {
+.formContainer {
     width: 600px;
     margin: 30px auto 0;
     display: block;
@@ -373,6 +372,20 @@ h3 {
     .pages {
         font-size: 2.5rem;
     }
+}
+
+.submit-input {
+    cursor: pointer;
+}
+
+textarea {
+    width: 500px;
+    height: 150px;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    font-family: Arial;
 }
 
 

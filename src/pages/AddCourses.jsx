@@ -43,7 +43,7 @@ function AddCourse() {
     return (
         <div className="app">
             <h1>Add your Courses here!</h1>
-            <div className="addContainer">
+            <div className="formContainer">
 
                 <div className="group">
                     <input placeholder="Fill in a title"

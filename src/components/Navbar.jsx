@@ -22,6 +22,16 @@ const MenuLabel = styled.label`
   z-index: 1000;
   box-shadow: 0 1rem 3rem rgba(182, 237, 200, 0.3);
   text-align: center;
+  @media (max-width: 1000px){
+    height: 3rem;
+    width: 3rem;
+    top: 3rem;
+  }
+  @media (max-width: 750px){
+    top: 2rem;
+    right: 4rem;
+  }
+ 
 `;
 
 const NavBackground = styled.div`
@@ -76,6 +86,16 @@ const Icon = styled.span`
   ${MenuLabel}:hover &::after {
     top: ${(props) => (props.clicked ? "0" : "1rem")};
   }
+  @media (max-width: 1000px){
+    width: 1.5rem;
+    margin-top: 1.5rem;
+    &::before,
+    &::after {
+      width: 1.5rem;
+      height: 2px;
+    }
+  }
+  
 `;
 
 const Navigation = styled.nav`
