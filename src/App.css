@@ -27,7 +27,6 @@ p {
 
 .app {
     padding: 4rem;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +38,7 @@ h1 {
     letter-spacing: 0.9px;
     background: linear-gradient(
             90deg,
-            var(--orange-primary) 90%,
+            var(--orange-primary) 95%,
             rgba(249, 211, 180, 0) 100%
     );
     -webkit-background-clip: text;
@@ -387,5 +386,8 @@ textarea {
     font-family: Arial;
 }
 
+.ico{
+    color: white;
+}
 
 
