@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import '../App.css';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
@@ -42,12 +42,6 @@ function Login() {
         })
     };
 
-    useEffect(() => {
-
-
-    }, []);
-
-
     return (
         <div className="app">
             <h1>Login for admin</h1>
@@ -71,8 +65,6 @@ function Login() {
             </div>
             <ToastContainer theme="dark"/>
         </div>
-
-
     );
 }
 

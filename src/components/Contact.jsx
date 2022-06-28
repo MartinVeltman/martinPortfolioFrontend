@@ -38,9 +38,7 @@ const Contact = () => {
 
 
     const sendEmail = (e) => {
-
         e.preventDefault();
-
 
         if (checkName() && checkEmail() && checkMessage()) {
             emailjs
@@ -52,11 +50,10 @@ const Contact = () => {
                 )
                 .then(
                     (result) => {
-                        console.log(result.text);
-                        console.log("message sent");
+                        toast.success("Email sent to Martin")
                     },
                     (error) => {
-                        console.log(error.text);
+                        toast.error("Something went wrong try again or email: martinveltman@live.nl");
                     }
                 );
         }
@@ -82,7 +79,7 @@ const Contact = () => {
 
                     <textarea placeholder="Type your message here..." id="messageInput" name="message"/>
 
-                    <button className="submit-input" width="400px" type="submit" value="Send">Send</button>
+                    <button className="submit-input" type="submit" value="Send">Send</button>
                 </form>
             </div>
             <ToastContainer theme="dark"/>

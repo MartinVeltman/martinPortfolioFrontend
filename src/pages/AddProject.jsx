@@ -26,7 +26,7 @@ function AddProject() {
     };
 
     useEffect(() => {
-        setImageUrl(uuidv4() +'.jpg');
+        setImageUrl(uuidv4() + '.jpg');
     }, []);
 
     function checkInputs() {

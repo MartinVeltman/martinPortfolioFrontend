@@ -374,6 +374,7 @@ h3 {
 
 .submit-input {
     cursor: pointer;
+    width: 400px;
 }
 
 textarea {
@@ -386,7 +387,7 @@ textarea {
     font-family: Arial;
 }
 
-.ico{
+.icons{
     color: white;
 }
 

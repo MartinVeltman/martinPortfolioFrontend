@@ -47,19 +47,23 @@ const CourseCard = ({course: {id, title, instructor, description, courseLink, fi
                     <a className="close" onClick={closeModal}>
                         &times;
                     </a>
+
                     <h3>Description</h3>
                     {description.length > 0 ? (
                         <p>{description}</p>
                     ) : (
                         <p><em>No description found</em></p>
                     )}
+
                     <h3>Link to course</h3>
                     {courseLink.length > 3 ? (
                         <p><a>{courseLink}</a></p>
                     ) : (
                         <p><em>No link found</em></p>
                     )}
+
                     {document.cookie.length > 3 ? (<DeleteButton onClick={deleteCourse}>Remove</DeleteButton>) : (<p/>)}
+
                 </div>
             </Popup>
         </div>

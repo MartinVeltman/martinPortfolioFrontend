@@ -19,7 +19,7 @@ function AddBook() {
     const [review, setReview] = useState("");
 
     useEffect(() => {
-        setImageUrl(uuidv4() +'.jpg');
+        setImageUrl(uuidv4() + '.jpg');
     }, []);
 
     function clearFields() {

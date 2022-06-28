@@ -42,7 +42,6 @@ const ProjectCard = ({project: {id, title, description, imageUrl, githubLink, bu
                 <h3>{title}</h3>
             </div>
 
-
             <Popup open={open} closeOnDocumentClick onClose={closeModal}>
                 <div className="modal">
                     <a className="close" onClick={closeModal}>
@@ -60,7 +59,8 @@ const ProjectCard = ({project: {id, title, description, imageUrl, githubLink, bu
                     ) : (
                         <p><em>No link found</em></p>
                     )}
-                    {document.cookie.length > 3 ? (<DeleteButton onClick={deleteProject}>Remove</DeleteButton>) : (<p/>)}
+                    {document.cookie.length > 3 ? (<DeleteButton onClick={deleteProject}>Remove</DeleteButton>) : (
+                        <p/>)}
                 </div>
             </Popup>
         </div>

@@ -26,7 +26,7 @@ const SocialIcons = () => {
 
     const getSocialIcons = () => socialIcons.map(({ icon, href }) => (
         <span key={uuidv4()}>
-            <ExternalLink href={href} className="ico">
+            <ExternalLink href={href} className="icons">
                 {icon}
             </ExternalLink>
         </span>
@@ -35,7 +35,7 @@ const SocialIcons = () => {
     return (
         <>
             <h3>LETS CONNECT</h3>
-            <span className="erik">{getSocialIcons()}</span>
+            <span>{getSocialIcons()}</span>
         </>
     );
 };

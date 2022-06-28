@@ -27,7 +27,6 @@ const BookCard = ({book: {id, title, imageUrl, author, description, review, rele
         });
     }
 
-
     return (
         <div className="card" key={id} onClick={() => setOpen(o => !o)}>
 

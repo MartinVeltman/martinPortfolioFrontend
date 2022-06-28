@@ -15,8 +15,8 @@ const ListItem = styled.li`
   color: #D88769;`;
 
 const AboutText = styled.p`
-    width: 30%;
-  @media (max-width: 1200px){
+  width: 30%;
+  @media (max-width: 1200px) {
     width: 55%
   }
 `;
@@ -25,17 +25,17 @@ const LanguageList = styled.ul`
 `;
 
 const AboutMeDiv = styled.div`
-    align-items: normal;
-  @media (max-width: 700px){
+  align-items: normal;
+  @media (max-width: 700px) {
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
   }
-  
+
 `;
 
 const NavToProjects = styled.button`
-    width: 300px;
+  width: 300px;
 `;
 
 
@@ -66,7 +66,7 @@ function AboutMe() {
                 <ListItem>AWS</ListItem>
                 <ListItem>Firebase</ListItem>
             </LanguageList>
-            <SocialIcons></SocialIcons>
+            <SocialIcons/>
 
             <NavToProjects onClick={navigateToProjects}>View my projects</NavToProjects>
         </AboutMeDiv>
