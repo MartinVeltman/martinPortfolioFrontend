@@ -5,7 +5,7 @@ import axios from "axios";
 import '../App.css';
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
-const API_URL = 'http://localhost:8080/api/v1/aws/creds';
+const API_URL = 'https://martin-portfolio-backend.herokuapp.com/api/v1/aws/creds';
 
 const UploadImage = (props) => {
     const fileInput = useRef();

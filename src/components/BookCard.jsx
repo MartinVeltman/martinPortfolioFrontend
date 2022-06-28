@@ -5,7 +5,7 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import styled from "styled-components";
 
-const API_URL = 'http://localhost:8080/api/v1/book/delete';
+const API_URL = 'https://martin-portfolio-backend.herokuapp.com/api/v1/book/delete';
 
 const DeleteButton = styled.button`
   cursor: pointer;

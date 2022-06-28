@@ -6,7 +6,7 @@ import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_URL = 'http://localhost:8080/api/v1/book';
+const API_URL = 'https://martin-portfolio-backend.herokuapp.com/api/v1/book';
 
 function Books() {
     const [searchTerm, setSearchTerm] = useState("");

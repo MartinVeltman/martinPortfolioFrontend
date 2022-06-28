@@ -3,7 +3,7 @@ import {toast, ToastContainer} from "react-toastify";
 import {useEffect, useState} from "react";
 import ProjectCard from "../components/ProjectCard";
 
-const API_URL = 'http://localhost:8080/api/v1/project';
+const API_URL = 'https://martin-portfolio-backend.herokuapp.com/api/v1/project';
 
 function Projects() {
     const [projects, setProjects] = useState([]);

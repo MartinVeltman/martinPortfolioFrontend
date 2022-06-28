@@ -3,7 +3,7 @@ import {toast, ToastContainer} from "react-toastify";
 import {useEffect, useState} from "react";
 import CourseCard from "../components/CourseCard";
 
-const API_URL = 'http://localhost:8080/api/v1/course';
+const API_URL = 'https://martin-portfolio-backend.herokuapp.com/api/v1/course';
 
 function Courses() {
     const [courses, setCourses] = useState([]);

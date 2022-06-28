@@ -13,7 +13,7 @@ const DeleteButton = styled.button`
   height: 30px;
 `;
 
-const API_URL = 'http://localhost:8080/api/v1/course/delete';
+const API_URL = 'https://martin-portfolio-backend.herokuapp.com/api/v1/course/delete';
 
 const CourseCard = ({course: {id, title, instructor, description, courseLink, finishYear, imageUrl}}) => {
     const [open, setOpen] = useState(false);

@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import UploadImage from "../components/UploadImage";
 import {v4 as uuidv4} from "uuid";
 
-const API_URL = 'http://localhost:8080/api/v1/project/addProject';
+const API_URL = 'https://martin-portfolio-backend.herokuapp.com/api/v1/project/addProject';
 
 function AddProject() {
     let uploadImageRef = useRef();
