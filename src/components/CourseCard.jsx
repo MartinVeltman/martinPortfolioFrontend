@@ -15,7 +15,7 @@ const DeleteButton = styled.button`
 
 const API_URL = 'http://localhost:8080/api/v1/course/delete';
 
-const CourseCard = ({course: {id, title, instructor, description, courseLink, finishYear, imagePath}}) => {
+const CourseCard = ({course: {id, title, instructor, description, courseLink, finishYear, imageUrl}}) => {
     const [open, setOpen] = useState(false);
     const closeModal = () => setOpen(false);
 
@@ -35,7 +35,7 @@ const CourseCard = ({course: {id, title, instructor, description, courseLink, fi
             </div>
 
             <div>
-                <img src={imagePath} alt={title}/>
+                <img src={'https://martinsportfoliobucket.s3.eu-west-3.amazonaws.com/' + imageUrl} alt={title}/>
             </div>
 
             <div>

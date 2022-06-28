@@ -1,31 +1,43 @@
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import S3 from "react-aws-s3";
+import {toast, ToastContainer} from "react-toastify";
+import axios from "axios";
+import '../App.css';
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
+const API_URL = 'http://localhost:8080/api/v1/aws/creds';
 
 const UploadImage = (props) => {
     const fileInput = useRef();
+    const [accesskey, setAccesskey] = useState("");
+    const [secretkey, setSecretkey] = useState("");
 
-    const handleSubmit = () => {
-        // e.preventDefault();
+    useEffect(() => {
+        getAwsCreds();
+    }, []);
+
+    const getAwsCreds = () => {
+        axios.get(`${API_URL}`).then(function (response) {
+            setAccesskey(response.data.accesskey);
+            setSecretkey(response.data.secretkey);
+        })
+    }
+
+    const handleSubmit = (fileName) => {
         const file = fileInput.current.files[0];
-        const newFileName = "-file";
         const config = {
             bucketName: "martinsportfoliobucket",
-            dirName: "portfolio",
             region: "eu-west-3",
-            accessKeyId: "AKIA6OGGYVVIDFY2MF57",
-            secretAccessKey: "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"
+            accessKeyId: accesskey,
+            secretAccessKey: secretkey
         };
         const ReactS3Client = new S3(config);
 
-
-        ReactS3Client.uploadFile(file, newFileName).then((data) => {
-            console.log(data);
+        ReactS3Client.uploadFile(file, fileName).then((data) => {
             if (data.status === 204) {
-                console.log("uploaded");
+                toast.success("Image succesfully uploaded to AWS")
             } else {
-                console.log("failed");
+                toast.error("Image upload failed")
             }
         })
 
@@ -38,10 +50,9 @@ const UploadImage = (props) => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <input type="file" ref={fileInput}/>
-                <br/>
-                <button type="submit"> Upload</button>
+                <input className="fileInput" accept="image/jpg" type="file" ref={fileInput}/>
             </form>
+            <ToastContainer theme="dark"/>
         </>
     );
 };

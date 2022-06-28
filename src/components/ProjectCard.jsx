@@ -15,7 +15,7 @@ const DeleteButton = styled.button`
   height: 30px;
 `;
 
-const ProjectCard = ({project: {id, title, description, imagePath, projectLink, buildYear}}) => {
+const ProjectCard = ({project: {id, title, description, imageUrl, githubLink, buildYear}}) => {
     const [open, setOpen] = useState(false);
     const closeModal = () => setOpen(false);
 
@@ -35,7 +35,7 @@ const ProjectCard = ({project: {id, title, description, imagePath, projectLink, 
             </div>
 
             <div>
-                <img src={imagePath} alt={title}/>
+                <img src={'https://martinsportfoliobucket.s3.eu-west-3.amazonaws.com/' + imageUrl} alt={title}/>
             </div>
 
             <div>
@@ -55,8 +55,8 @@ const ProjectCard = ({project: {id, title, description, imagePath, projectLink, 
                         <p><em>No description found</em></p>
                     )}
                     <h3>Link to github</h3>
-                    {projectLink?.length > 3 ? (
-                        <p><a>{projectLink}</a></p>
+                    {githubLink?.length > 3 ? (
+                        <p>{githubLink}</p>
                     ) : (
                         <p><em>No link found</em></p>
                     )}

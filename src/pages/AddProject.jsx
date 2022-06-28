@@ -1,20 +1,36 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../App.css';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import UploadImage from "../components/UploadImage";
+import {v4 as uuidv4} from "uuid";
 
 const API_URL = 'http://localhost:8080/api/v1/project/addProject';
 
 function AddProject() {
+    let uploadImageRef = useRef();
+
     const [title, setTitle] = useState("");
     const [buildYear, setbuildYear] = useState("");
-    const [imagepath, setImagepath] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [githubLink, setGithubLink] = useState("");
     const [description, setDescription] = useState("");
 
+    const project = {
+        title: title,
+        buildYear: buildYear,
+        githubLink: githubLink,
+        description: description,
+        imageUrl: imageUrl
+    };
+
+    useEffect(() => {
+        setImageUrl(uuidv4() +'.jpg');
+    }, []);
+
     function checkInputs() {
-        return !(title === "" || buildYear === "" || githubLink === "" || description === "" || imagepath === "");
+        return !(title === "" || buildYear === "" || githubLink === "" || description === "");
     }
 
     function clearFields() {
@@ -22,39 +38,25 @@ function AddProject() {
         setbuildYear("");
         setGithubLink("");
         setDescription("");
-        setImagepath("");
+        setImageUrl("");
     }
-
-
-    const project = {
-        title: title,
-        buildYear: buildYear,
-        githubLink: githubLink,
-        description: description,
-        imagepath: imagepath
-    };
-
-    useEffect(() => {
-
-
-    }, []);
 
     const addProject = () => {
         if (checkInputs()) {
             if (document.cookie.length > 3) {
                 axios.post(`${API_URL}`, project).then(function () {
                     toast.success("Project succesfully added")
+                    uploadImageRef.current.handleSubmit(imageUrl);
                     clearFields();
                 }).catch(function () {
-                    toast.error("Something went wrong. oops!")
+                    toast.error("Something went wrong. oops!");
                 });
             } else {
-                toast.error("Are you a admin?")
+                toast.error("Are you a admin?");
             }
         } else {
-            toast.error("Fill in all the fields correctly")
+            toast.error("Please fill in all fields");
         }
-
     }
 
     return (
@@ -76,12 +78,7 @@ function AddProject() {
                     <label>Buildyear</label>
                 </div>
 
-                <div className="group">
-                    <input placeholder="Give the imagepath"
-                           onChange={(e) => setImagepath(e.target.value)}/>
-                    <span className="bar"/>
-                    <label>Imagepath</label>
-                </div>
+                <UploadImage childRef={uploadImageRef}/>
 
                 <div className="group">
                     <input placeholder="Give the path to github"

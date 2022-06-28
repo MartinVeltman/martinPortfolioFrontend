@@ -1,67 +1,65 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../App.css';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import UploadImage from "../components/UploadImage";
-import React from "react";
-import {useRef} from "react";
+import {v4 as uuidv4} from "uuid";
 
 const API_URL = 'http://localhost:8080/api/v1/book/addBook';
 
 function AddBook() {
-    let childRef = useRef();
+    let uploadImageRef = useRef();
 
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
-    const [releaseyear, setReleaseyear] = useState("");
+    const [releaseYear, setReleaseYear] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [description, setDescription] = useState("");
-    const [courseLink, setReview] = useState("");
+    const [review, setReview] = useState("");
+
+    useEffect(() => {
+        setImageUrl(uuidv4() +'.jpg');
+    }, []);
 
     function clearFields() {
         setTitle("");
         setAuthor("");
-        setReleaseyear("");
+        setReleaseYear("");
         setImageUrl("");
         setDescription("");
         setReview("");
     }
 
     function checkFields() {
-        return !(title === "" || author === "" || releaseyear === "" || imageUrl === "" || description === "" || courseLink === "");
+        return !(title === "" || author === "" || releaseYear === "" || description === "" || review === "");
 
     }
 
     const book = {
         title: title,
         author: author,
-        releaseyear: releaseyear,
-        imagepath: imageUrl,
+        releaseYear: releaseYear,
+        imageUrl: imageUrl,
         description: description,
-        courseLink: courseLink
+        review: review
     };
 
-    useEffect(() => {
-
-
-    }, []);
-
     const addBook = () => {
-        if (true) {
+        if (checkFields()) {
             if (document.cookie.length > 3) {
                 axios.post(`${API_URL}`, book).then(function () {
-                    toast.success("Book succesfully added")
-                    childRef.current.uploadFile("hey");
+                    toast.success("Book succesfully added");
+                    uploadImageRef.current.handleSubmit(imageUrl);
                     clearFields();
                 }).catch(function () {
-                    toast.error("Something went wrong. oops!")
+                    toast.error("Something went wrong. oops!");
                 });
             } else {
-                toast.error("Are you a admin?")
+                toast.error("Are you a admin?");
             }
         } else {
-            toast.error("Please fill in all fields")
+            toast.error("Please fill in all fields");
         }
     }
 
@@ -86,19 +84,12 @@ function AddBook() {
 
                 <div className="group">
                     <input type="number" placeholder="Fill in the releaseyear"
-                           onChange={(e) => setReleaseyear(e.target.value)}/>
+                           onChange={(e) => setReleaseYear(e.target.value)}/>
                     <span className="bar"/>
                     <label>Releaseyear</label>
                 </div>
 
-                <UploadImage childRef={childRef}/>
-
-                <div className="group">
-                    <input placeholder="Give the imagepath"
-                           onChange={(e) => setImageUrl(e.target.value)}/>
-                    <span className="bar"/>
-                    <label>Imagepath</label>
-                </div>
+                <UploadImage childRef={uploadImageRef}/>
 
                 <div className="group">
                     <input placeholder="Fill in a description"
@@ -114,7 +105,7 @@ function AddBook() {
                     <label>Review</label>
                 </div>
 
-                <button type="submit" onClick={() => childRef.current.handleSubmit()}>Add book</button>
+                <button type="submit" onClick={addBook}>Add book</button>
             </div>
             <ToastContainer theme="dark"/>
 

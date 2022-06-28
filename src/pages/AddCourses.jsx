@@ -1,61 +1,64 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../App.css';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import UploadImage from "../components/UploadImage";
+import {v4 as uuidv4} from "uuid";
 
 const API_URL = 'http://localhost:8080/api/v1/course/addCourse';
 
 function AddCourse() {
+    let uploadImageRef = useRef();
+
     const [title, setTitle] = useState("");
     const [instructor, setInstructor] = useState("");
     const [yearOfAchievement, setYearOfAchievement] = useState("");
-    const [imagepath, setImagepath] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [courseLink, setCourseLink] = useState("");
     const [description, setDescription] = useState("");
 
-    const Course = {
+    const course = {
         title: title,
         instructor: instructor,
         yearOfAchievement: yearOfAchievement,
-        imagePath: imagepath,
+        imageUrl: imageUrl,
         courseLink: courseLink,
         description: description,
     };
 
+    useEffect(() => {
+        setImageUrl(uuidv4() +'.jpg');
+    }, []);
+
     function checkInputs() {
-        return !(title === "" || instructor === "" || yearOfAchievement === "" || imagepath === ""
-            || courseLink === "" || description === "");
+        return !(title === "" || instructor === "" || yearOfAchievement === "" || courseLink === "" || description === "");
     }
 
     function clearFields() {
         setTitle("");
         setInstructor("");
         setYearOfAchievement("");
-        setImagepath("");
+        setImageUrl("");
         setCourseLink("");
         setDescription("");
     }
 
-    useEffect(() => {
-
-
-    }, []);
-
     const addCourse = () => {
-        if(checkInputs()) {
+        if (checkInputs()) {
             if (document.cookie.length > 3) {
-                axios.post(`${API_URL}`, Course).then(function () {
+                axios.post(`${API_URL}`, course).then(function () {
                     toast.success("Course succesfully added")
+                    uploadImageRef.current.handleSubmit(imageUrl);
                     clearFields();
                 }).catch(function () {
-                    toast.error("Something went wrong. oops!")
+                    toast.error("Something went wrong. oops!");
                 });
             } else {
-                toast.error("Are you a admin?")
+                toast.error("Are you a admin?");
             }
         } else {
-            toast.error("Please fill in all fields")
+            toast.error("Please fill in all fields");
         }
     }
 
@@ -92,12 +95,7 @@ function AddCourse() {
                     <label>Course link</label>
                 </div>
 
-                <div className="group">
-                    <input placeholder="Give the imagepath"
-                           onChange={(e) => setImagepath(e.target.value)}/>
-                    <span className="bar"/>
-                    <label>Imagepath</label>
-                </div>
+                <UploadImage childRef={uploadImageRef}/>
 
                 <div className="group">
                     <input placeholder="Fill in a description"

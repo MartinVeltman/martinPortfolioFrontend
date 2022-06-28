@@ -15,7 +15,7 @@ const DeleteButton = styled.button`
   height: 30px;
 `;
 
-const BookCard = ({book: {id, title, imagePath, autor, description, review, releaseYear}}) => {
+const BookCard = ({book: {id, title, imageUrl, author, description, review, releaseYear}}) => {
     const [open, setOpen] = useState(false);
     const closeModal = () => setOpen(false);
 
@@ -36,11 +36,11 @@ const BookCard = ({book: {id, title, imagePath, autor, description, review, rele
             </div>
 
             <div>
-                <img src={imagePath} alt={title}/>
+                <img src={'https://martinsportfoliobucket.s3.eu-west-3.amazonaws.com/' + imageUrl} alt={title}/>
             </div>
 
             <div>
-                <span>{autor}</span>
+                <span>{author}</span>
                 <h3>{title}</h3>
             </div>
             <Popup open={open} closeOnDocumentClick onClose={closeModal}>
