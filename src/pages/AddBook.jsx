@@ -3,14 +3,19 @@ import '../App.css';
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import UploadImage from "../components/UploadImage";
+import React from "react";
+import {useRef} from "react";
 
 const API_URL = 'http://localhost:8080/api/v1/book/addBook';
 
 function AddBook() {
+    let childRef = useRef();
+
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [releaseyear, setReleaseyear] = useState("");
-    const [imagepath, setImagepath] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
     const [description, setDescription] = useState("");
     const [courseLink, setReview] = useState("");
 
@@ -18,13 +23,13 @@ function AddBook() {
         setTitle("");
         setAuthor("");
         setReleaseyear("");
-        setImagepath("");
+        setImageUrl("");
         setDescription("");
         setReview("");
     }
 
     function checkFields() {
-        return !(title === "" || author === "" || releaseyear === "" || imagepath === "" || description === "" || courseLink === "");
+        return !(title === "" || author === "" || releaseyear === "" || imageUrl === "" || description === "" || courseLink === "");
 
     }
 
@@ -32,7 +37,7 @@ function AddBook() {
         title: title,
         author: author,
         releaseyear: releaseyear,
-        imagepath: imagepath,
+        imagepath: imageUrl,
         description: description,
         courseLink: courseLink
     };
@@ -43,10 +48,11 @@ function AddBook() {
     }, []);
 
     const addBook = () => {
-        if (checkFields()) {
+        if (true) {
             if (document.cookie.length > 3) {
                 axios.post(`${API_URL}`, book).then(function () {
                     toast.success("Book succesfully added")
+                    childRef.current.uploadFile("hey");
                     clearFields();
                 }).catch(function () {
                     toast.error("Something went wrong. oops!")
@@ -85,9 +91,11 @@ function AddBook() {
                     <label>Releaseyear</label>
                 </div>
 
+                <UploadImage childRef={childRef}/>
+
                 <div className="group">
                     <input placeholder="Give the imagepath"
-                           onChange={(e) => setImagepath(e.target.value)}/>
+                           onChange={(e) => setImageUrl(e.target.value)}/>
                     <span className="bar"/>
                     <label>Imagepath</label>
                 </div>
@@ -100,15 +108,16 @@ function AddBook() {
                 </div>
 
                 <div className="group">
-                    <input placeholder="Fill in a courseLink"
+                    <input placeholder="Fill in a review"
                            onChange={(e) => setReview(e.target.value)}/>
                     <span className="bar"/>
                     <label>Review</label>
                 </div>
 
-                <button type="button" onClick={addBook}>Add book</button>
+                <button type="submit" onClick={() => childRef.current.handleSubmit()}>Add book</button>
             </div>
             <ToastContainer theme="dark"/>
+
         </div>
     );
 }

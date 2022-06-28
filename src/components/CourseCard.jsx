@@ -53,9 +53,9 @@ const CourseCard = ({course: {id, title, instructor, description, courseLink, fi
                     ) : (
                         <p><em>No description found</em></p>
                     )}
-                    <h3>Review</h3>
+                    <h3>Link to course</h3>
                     {courseLink.length > 3 ? (
-                        <p>{courseLink}</p>
+                        <p><a>{courseLink}</a></p>
                     ) : (
                         <p><em>No link found</em></p>
                     )}

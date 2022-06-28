@@ -6,7 +6,6 @@ import ProjectCard from "../components/ProjectCard";
 const API_URL = 'http://localhost:8080/api/v1/project';
 
 function Projects() {
-    const [searchTerm, setSearchTerm] = useState("");
     const [projects, setProjects] = useState([]);
 
 
@@ -20,28 +19,11 @@ function Projects() {
 
     }, []);
 
-    // const searchCourses = async (title) => {
-    //     const {data} = await axios.get(`${API_URL}/getBooksByTitle?title=${title}`);
-    //
-    //     setBooks(data);
-    // };
 
     return (
         <div className="app">
             <h1>Projects i've done</h1>
 
-            {/*<div className="search">*/}
-            {/*    <input*/}
-            {/*        value={searchTerm}*/}
-            {/*        onChange={(e) => setSearchTerm(e.target.value)}*/}
-            {/*        placeholder="Search for books"*/}
-            {/*    />*/}
-            {/*    <img*/}
-            {/*        src={searchIcon}*/}
-            {/*        alt="search"*/}
-            {/*        onClick={() => searchBooks(searchTerm)}*/}
-            {/*    />*/}
-            {/*</div>*/}
 
             {projects?.length > 0 ? (
                 <div className="container">

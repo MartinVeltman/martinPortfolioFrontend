@@ -9,11 +9,12 @@ const API_URL = 'http://localhost:8080/api/v1/project/addProject';
 function AddProject() {
     const [title, setTitle] = useState("");
     const [buildYear, setbuildYear] = useState("");
+    const [imagepath, setImagepath] = useState("");
     const [githubLink, setGithubLink] = useState("");
     const [description, setDescription] = useState("");
 
     function checkInputs() {
-        return !(title === "" || buildYear === "" || githubLink === "" || description === "");
+        return !(title === "" || buildYear === "" || githubLink === "" || description === "" || imagepath === "");
     }
 
     function clearFields() {
@@ -21,6 +22,7 @@ function AddProject() {
         setbuildYear("");
         setGithubLink("");
         setDescription("");
+        setImagepath("");
     }
 
 
@@ -29,6 +31,7 @@ function AddProject() {
         buildYear: buildYear,
         githubLink: githubLink,
         description: description,
+        imagepath: imagepath
     };
 
     useEffect(() => {
@@ -71,6 +74,13 @@ function AddProject() {
                            onChange={(e) => setbuildYear(e.target.value)}/>
                     <span className="bar"/>
                     <label>Buildyear</label>
+                </div>
+
+                <div className="group">
+                    <input placeholder="Give the imagepath"
+                           onChange={(e) => setImagepath(e.target.value)}/>
+                    <span className="bar"/>
+                    <label>Imagepath</label>
                 </div>
 
                 <div className="group">

@@ -16,8 +16,8 @@ const ListItem = styled.li`
 
 const AboutText = styled.p`
     width: 30%;
-  @media (max-width: 750px){
-    
+  @media (max-width: 1200px){
+    width: 55%
   }
 `;
 
@@ -26,6 +26,12 @@ const LanguageList = styled.ul`
 
 const AboutMeDiv = styled.div`
     align-items: normal;
+  @media (max-width: 700px){
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
 `;
 
 const NavToProjects = styled.button`
@@ -54,6 +60,7 @@ function AboutMe() {
                 <ListItem>Angular</ListItem>
                 <ListItem>Springboot</ListItem>
                 <ListItem>React</ListItem>
+                <ListItem>HTML & CSS</ListItem>
                 <ListItem>SQL Databases</ListItem>
                 <ListItem>Machine Learning with Python</ListItem>
                 <ListItem>AWS</ListItem>

@@ -9,9 +9,6 @@ import AddBook from "./pages/AddBook";
 import AddCourses from "./pages/AddCourses";
 import AddProject from "./pages/AddProject";
 import Navbar from "./components/Navbar";
-import AdminPanel from "./pages/AdminPanel";
-import {createTheme} from "@mui/material";
-import {green, purple} from "@mui/material/colors";
 import AboutMe from "./pages/AboutMe";
 import Contact from "./components/Contact";
 
@@ -29,8 +26,7 @@ function App() {
                     <Route path='/books' element={<Books/>}/>
                     <Route path='/courses' element={<Courses/>}/>
                     <Route path='/contact' element={<Contact/>}/>
-                    <Route path='/admin' element={<AdminPanel/>}/>
-                    <Route path='/adminAdd' element={<AdminAdd/>}/>
+                    <Route path='/admin' element={<AdminAdd/>}/>
                     <Route path='/admin/books' element={<AddBook/>}/>
                     <Route path='/admin/courses' element={<AddCourses/>}/>
                     <Route path='/admin/projects' element={<AddProject/>}/>

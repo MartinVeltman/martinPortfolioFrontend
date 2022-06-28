@@ -15,7 +15,7 @@ const DeleteButton = styled.button`
   height: 30px;
 `;
 
-const ProjectCard = ({project: {id, title, description, projectLink, buildYear}}) => {
+const ProjectCard = ({project: {id, title, description, imagePath, projectLink, buildYear}}) => {
     const [open, setOpen] = useState(false);
     const closeModal = () => setOpen(false);
 
@@ -33,12 +33,12 @@ const ProjectCard = ({project: {id, title, description, projectLink, buildYear}}
             <div>
                 <p>{buildYear}</p>
             </div>
+
             <div>
-                <p>{buildYear}</p>
+                <img src={imagePath} alt={title}/>
             </div>
 
             <div>
-                <p>{buildYear}</p>
                 <h3>{title}</h3>
             </div>
 
@@ -54,9 +54,9 @@ const ProjectCard = ({project: {id, title, description, projectLink, buildYear}}
                     ) : (
                         <p><em>No description found</em></p>
                     )}
-                    <h3>Review</h3>
+                    <h3>Link to github</h3>
                     {projectLink?.length > 3 ? (
-                        <p>{projectLink}</p>
+                        <p><a>{projectLink}</a></p>
                     ) : (
                         <p><em>No link found</em></p>
                     )}
